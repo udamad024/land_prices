@@ -1,5 +1,6 @@
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
+import os
 
 def land_checks(num):
   my_url = 'https://ikman.lk/en/shops/my-colombo-properties?page={n}'.format(n=num)
@@ -12,6 +13,11 @@ def land_checks(num):
   page_soup = soup(page_html, "html.parser")
 
   containers =  page_soup.findAll("div",{"class":"ui-item"})
+
+  if os.path.exists("products{}.csv".format(num)):
+    os.remove("products{}.csv".format(num))
+  else:
+    print("The file does not exist")
 
   filename = "products{}.csv".format(num)
   f = open(filename, "w")
