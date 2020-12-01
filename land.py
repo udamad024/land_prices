@@ -18,3 +18,6 @@ for container in containers:
 
   price = container.findAll("p",{"class":"item-info"})
   product_price = price[0].text
+
+  print("Land Title: " + product_name)
+  print("Land Price: " + product_price)
