@@ -11,4 +11,10 @@ uClient.close() #Closes Connection
 page_soup = soup(page_html, "html.parser")
 
 containers =  page_soup.findAll("div",{"class":"ui-item"})
-print()
+
+for container in containers:
+  title_container = container.findAll("a",{"class":"item-title h4"})
+  product_name = title_container[0].text
+
+  price = container.findAll("p",{"class":"item-info"})
+  product_price = price[0].text
