@@ -32,8 +32,8 @@ def land_checks(web,num):
     price = container.findAll("p",{"class":"item-info"})
     product_price = price[0].text
 
-    print("Land Title: " + product_name)
-    print("Land Price: " + product_price)
+    print("Title: " + product_name)
+    print("Price: " + product_price)
 
     f.write(product_name + "," + product_price.replace(",", " ") + "\n")
 
