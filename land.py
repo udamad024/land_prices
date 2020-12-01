@@ -2,8 +2,8 @@ from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 import os
 
-def land_checks(num):
-  my_url = 'https://ikman.lk/en/shops/my-colombo-properties?page={n}'.format(n=num)
+def land_checks(web,num):
+  my_url = 'https://ikman.lk/en/shops/{inp}?page={n}'.format(inp=web,n=num)
 
   uClient = uReq(my_url) #opens connection to URL, grabbing the page
   page_html = uClient.read() #Gets the HTML file from opened URL
@@ -39,5 +39,7 @@ def land_checks(num):
 
   f.close()
 
+ints = input("Enter Ikman Shop name: ")
 num = int(input("Please Enter Requried number: "))
-land_checks(num)
+
+land_checks(ints,num)
