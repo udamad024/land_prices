@@ -13,6 +13,12 @@ def land_checks(num):
 
   containers =  page_soup.findAll("div",{"class":"ui-item"})
 
+  filename = "products{}.csv".format(num)
+  f = open(filename, "w")
+
+  headers = "Land_Name, Land_price\n"  # header in csv file (excel)
+  f.write(headers)  # #first line is header
+
   for container in containers:
     title_container = container.findAll("a",{"class":"item-title h4"})
     product_name = title_container[0].text
@@ -22,6 +28,10 @@ def land_checks(num):
 
     print("Land Title: " + product_name)
     print("Land Price: " + product_price)
+
+    f.write(product_name + "," + product_price.replace(",", " ") + "\n")
+
+  f.close()
 
 num = int(input("Please Enter Requried number: "))
 land_checks(num)
